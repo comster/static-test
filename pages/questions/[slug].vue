@@ -9,7 +9,8 @@
 <script setup>
     const route = useRoute();
     const slug = route.params.slug;
-    // console.log('route', route);
+    console.log('route', route)
+    console.log('slug', route.params.slug);
     const page = await useQAQuery({query: `${slug}`});
     console.log('page', page);
     console.log('page.value', page.value);
