@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 const navigation = [{
   _path: '/',
-  title: 'Home'
-}, {
+  title: 'The Mission'
+}
+                    /*, {
   _path: '/about',
   title: 'About'
-}];
+}*/];
 const appConfig = useAppConfig()
 </script>
 
