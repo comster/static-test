@@ -9,16 +9,16 @@
 <script setup>
     const route = useRoute();
     const slug = route.params.slug;
-    console.log('route', route)
-    console.log('slug', route.params.slug);
+    // console.log('route', route)
+    // console.log('slug', route.params.slug);
     const page = await useQAQuery({query: `${slug}`});
-    console.log('page', page);
-    console.log('page.value', page.value);
+    // console.log('page', page);
+    // console.log('page.value', page.value);
 
-    // useHead({
-    //   title: page.value?.title,
-    // });
-
+    useHead({
+      title: 'Anchor',
+    });
+    
     import markdownParser from "@nuxt/content/transformers/markdown"
 
     // const props = defineProps({
@@ -30,7 +30,16 @@
 
     const json = JSON.parse(page.value);
 
-    console.log(json)
+    useSeoMeta({
+      title: 'Anchor',
+      ogTitle: 'Anchor',
+      description: () => `${json.question}`,
+      ogDescription: () => `${json.question}`,
+      // ogImage: 'https://example.com/image.png',
+      twitterCard: 'summary',
+    });
+
+    // console.log(json);
 
     const pageContent = ref("");
 
@@ -42,7 +51,11 @@ ${json.question}
 
 # Answer
 
-${json.response}`
+${json.response}
+
+------
+[Tweet](https://twitter.com/AnchorDoc917/status/${json.tweet_id})
+`
 ).then((md) => {
       pageContent.value = md;
     });
