@@ -1,9 +1,10 @@
 export default async function useQAQuery({query, variables = {}}: {query: string, variables?: any}) {
     const runtimeConfig = useRuntimeConfig();
 
-    const pagesApiEndpoint = `https://raw.githubusercontent.com/comster/bluise/master/${query}.json`;
+    // https://raw.githubusercontent.com/comster/static-test/master/json/test.json
+    const url = `https://raw.githubusercontent.com/comster/static-test/master/json/${query}.json`;
 
-    const response = await useFetch(pagesApiEndpoint, {
+    const response = await useFetch(url, {
         method: 'GET',
         key: JSON.stringify(
             {
